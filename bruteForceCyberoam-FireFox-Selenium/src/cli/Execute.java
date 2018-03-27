@@ -15,7 +15,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  * geckodriver: 0.20.0
  * */
 public class Execute {
-
 	public static void main(String[] args) throws IOException, InterruptedException {
 		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"/GeckoDriver0.20.0/geckodriver-v0.20.0-win64/geckodriver.exe");		//for windows...
 		WebDriver driver= new FirefoxDriver();
@@ -61,35 +60,26 @@ public class Execute {
 		  
 		  else if(driver.getPageSource().contains("You have successfully logged in")){
 			  System.out.println("Correct password for "+usr+": "+pss);
-			  System.out.println("before logout");	
 		      
 			  driver.findElement(By.id("logincaption")).submit();
-			  System.out.println("after logout");	
 		      
-			  driver.get("http://172.16.1.1:8090/httpclient.html");
-			  System.out.println("after redirect");	
+			  driver.get(portal);
 		  }
 		  else if(driver.getPageSource().contains("You have reached Maximum Login Limit."))	
 		  {
 			  System.out.println("Correct password for "+usr+": "+pss);
-			  System.out.println("before logout");	
 		        
 			  driver.findElement(By.id("logincaption")).submit();
-			  System.out.println("afterlogout");	
 		      
-			  driver.get(portal);
-			  System.out.println("after redirect");	  
+			  driver.get(portal);  
 		  }
 		  else if(driver.getPageSource().contains(" Your data transfer has been exceeded"))	
 		  {
 			  System.out.println("Correct password for "+usr+": "+pss);
-			  System.out.println("before logout");	
 		        
 			  driver.findElement(By.id("logincaption")).submit();
-			  System.out.println("afterlogout");	
 		      
 			  driver.get(portal);
-			  System.out.println("after redirect");	  
 		  }
 		  
 		  else{
